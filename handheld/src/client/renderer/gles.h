@@ -25,6 +25,8 @@
 	#endif
 #elif defined(__linux__)
 	// Linux专用OpenGL头文件包含
+	#define USE_VBO
+	#define GL_QUADS 0x0007
 	#include <GL/glew.h>
 	#include <GL/gl.h>
 	#include <GL/glu.h>
