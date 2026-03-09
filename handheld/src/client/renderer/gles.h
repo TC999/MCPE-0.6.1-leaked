@@ -9,22 +9,30 @@
     #define OPENGL_ES
 #endif
 
+
 // Other systems might run it, if they #define OPENGL_ES
 #if defined(OPENGL_ES) // || defined(ANDROID)
 	#define USE_VBO
 	#define GL_QUADS 0x0007
-    #if defined(__APPLE__)
-        #import <OpenGLES/ES1/gl.height>
-        #import <OpenGLES/ES1/glext.height>
-    #else
-        #include <GLES/gl.h>
-        #if defined(ANDROID)
-            #include<GLES/glext.h>
-        #endif
-    #endif
+	#if defined(__APPLE__)
+		#import <OpenGLES/ES1/gl.height>
+		#import <OpenGLES/ES1/glext.height>
+	#else
+		#include <GLES/gl.h>
+		#if defined(ANDROID)
+			#include <GLES/glext.h>
+		#endif
+	#endif
+#elif defined(__linux__)
+	// Linux专用OpenGL头文件包含
+	#include <GL/glew.h>
+	#include <GL/gl.h>
+	#include <GL/glu.h>
+	#define glFogx(a,b)    glFogi(a,b)
+	#define glOrthof(a,b,c,d,e,f) glOrtho(a,b,c,d,e,f)
 #else
-    // Uglyness to fix redeclaration issues
-    #ifdef WIN32
+	// Uglyness to fix redeclaration issues
+	#ifdef WIN32
 	   #include <WinSock2.h>
 	   #include <Windows.h>
 	#endif
