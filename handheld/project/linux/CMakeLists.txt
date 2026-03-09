@@ -5,14 +5,14 @@ set(CMAKE_CXX_STANDARD 11)
 
 # 源文件收集
 file(GLOB_RECURSE SRC_FILES
-    "${CMAKE_SOURCE_DIR}/../src/*.cpp"
-    "${CMAKE_SOURCE_DIR}/../src/*.c"
+    "${CMAKE_SOURCE_DIR}/../../src/*.cpp"
+    "${CMAKE_SOURCE_DIR}/../../src/*.c"
 )
 
 
 # 头文件目录，参考win32工程，递归包含所有相关子目录
-set(SRC_DIR "${CMAKE_SOURCE_DIR}/../src")
-set(LIB_DIR "${CMAKE_SOURCE_DIR}/../lib")
+set(SRC_DIR "${CMAKE_SOURCE_DIR}/../../src")
+set(LIB_DIR "${CMAKE_SOURCE_DIR}/../../lib")
 include_directories(
     "${SRC_DIR}"
     "${LIB_DIR}/include"
